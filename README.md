@@ -44,7 +44,6 @@ headers: none
         "user_id": 3,
         "name": "user one",
         "email": "userone@user.com",
-        "token": "3|jUW945Q8ZinRAUhkTgsRNhU9dFhgc2ItvbjEkVCw9a813fde",
         "roles": [
             "user"
         ],
