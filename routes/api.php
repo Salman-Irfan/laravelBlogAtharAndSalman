@@ -33,3 +33,6 @@ Route::middleware(['auth:sanctum', 'admin'])->get('/v1/admin', function (Request
     return new LoginResource(auth()->user());
 });
 // user routes
+Route::middleware(['auth:sanctum', 'user'])->get('/v1/user', function (Request $request) {
+    return new LoginResource(auth()->user());
+});
