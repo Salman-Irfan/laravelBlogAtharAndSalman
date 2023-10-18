@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api\AuthControllers;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Helper;
 use App\Http\Requests\LoginRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\Auth\LoginResource;
+
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -19,9 +20,7 @@ class LoginController extends Controller
         if (!Auth::attempt($request->only('email', 'password'))) {
             Helper::sendError('Email or password is incorrect', []);
         }
-        return true;
         // 3. sending response
-        
-        return new UserResource(auth()->user());
+        return new LoginResource(auth()->user());
     }
 }
