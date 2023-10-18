@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthControllers\LoginController;
 use App\Http\Controllers\Api\AuthControllers\RegisterController;
+use App\Http\Resources\Auth\LoginResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,10 @@ Route::post('/v1/login', [LoginController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// login required
+// admin routes
+Route::middleware(['auth:sanctum', 'admin'])->get('/v1/admin', function (Request $request) {
+    return new LoginResource(auth()->user());
+});
+// user routes
