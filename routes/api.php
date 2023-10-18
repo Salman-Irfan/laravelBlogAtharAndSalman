@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthControllers\LoginController;
+use App\Http\Controllers\Api\AuthControllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ###### Public Routes #####
+// register route
+Route::post('/v1/register', [RegisterController::class, 'register']);
 // login route
 Route::post('/v1/login', [LoginController::class, 'login']);
 

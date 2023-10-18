@@ -6,7 +6,7 @@ use App\Http\Helpers\Helper;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // rules
-            'email' => 'required|email|exists:users,email',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ];
     }
-    // if validation errors
+    // sending errors if validation fails
     // public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
-    public function failedValidation(Validator $validator){
-        // send error messages
+    public function failedValidation(Validator $validator)
+    {
         Helper::sendError('validation error', $validator->errors());
     }
 }

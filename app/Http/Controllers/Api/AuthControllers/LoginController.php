@@ -18,7 +18,7 @@ class LoginController extends Controller
         // 2. login user
         // attempt to login
         if (!Auth::attempt($request->only('email', 'password'))) {
-            Helper::sendError('Email or password is incorrect', []);
+            Helper::sendError('Email or password is incorrect');
         }
         // 3. sending response
         return new LoginResource(auth()->user());
