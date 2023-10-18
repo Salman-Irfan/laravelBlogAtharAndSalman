@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Helpers\Helper;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -32,6 +33,7 @@ class LoginRequest extends FormRequest
     // public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     public function failedValidation(Validator $validator){
         // send error message
-        return $validator->errors()->first();
+        // return $validator->errors()->first();
+        Helper::sendError('validation error', $validator->errors());
     }
 }
