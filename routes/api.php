@@ -33,7 +33,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
 
     // Blogs routes
-    Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
+    Route::get('/public/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
     // ##### Protected Routes #####
     // login required
     Route::middleware(['auth:sanctum'])->group(function () {

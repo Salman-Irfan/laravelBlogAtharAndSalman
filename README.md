@@ -234,3 +234,38 @@ Response:
     }
 }
 </pre>
+
+<!-- public routes -->
+<h3>Public Routes</h3>
+<pre>
+Get all Approved Blogs
+Method:  Get
+Endpoint: http://10.0.10.187:8000/api/v1/public/all-users-blogs
+
+
+Response:
+[
+    {
+        "id": 1,
+        "title": "The World of Programming",
+        "description": "Explore the exciting world of programming and coding.",
+        "image": "programming.png",
+        "isApproved": 1,
+        "category_id": 1,
+        "user_id": 2,
+        "created_at": "2023-10-19 08:25:39",
+        "updated_at": "2023-10-19 08:25:39"
+    },
+    {
+        "id": 2,
+        "title": "Laravel: Building Web Applications",
+        "description": "Learn how to build web applications using the Laravel framework.",
+        "image": "laravel.png",
+        "isApproved": 1,
+        "category_id": 2,
+        "user_id": 2,
+        "created_at": "2023-10-19 08:25:39",
+        "updated_at": "2023-10-19 08:25:39"
+    }
+]
+</pre>
