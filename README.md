@@ -151,6 +151,7 @@ Response:
   },
 ]
 </pre>
+
 <!-- delete user -->
 <pre>
 Delete user by Id
@@ -171,5 +172,4 @@ Response:
         "updated_at": "2023-10-19 05:33:48"
     }
 }
-
 </pre>
