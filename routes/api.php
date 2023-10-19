@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\DeleteUserById;
+use App\Http\Controllers\Api\Admin\GetAllBlogs;
 use App\Http\Controllers\Api\Admin\GetAllUsers;
+use App\Http\Controllers\Api\Admin\UpdateBlogStatus;
 use App\Http\Controllers\Api\AuthControllers\{
     LoginController,
     RegisterController
@@ -34,8 +36,12 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         // Admin role required
         Route::middleware(['admin'])->group(function () {
+            // users routes
             Route::get('/admin/get-all-users', [GetAllUsers::class, 'getAllUsers']);
-            Route::delete('/admin/delete-user/{id}', [DeleteUserById::class, 'deleteUserById']); // under development
+            Route::delete('/admin/delete-user/{id}', [DeleteUserById::class, 'deleteUserById']);
+            // blogs routes
+            Route::get('/admin/all-blogs', [GetAllBlogs::class, 'getAllBlogs']); // under development
+            Route::patch('/admin/update-blog-status/{id}', [UpdateBlogStatus::class, 'updateBlogStatus']); // under development
         });
 
         // User role required
