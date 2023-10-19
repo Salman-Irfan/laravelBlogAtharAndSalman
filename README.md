@@ -177,7 +177,7 @@ Response:
 <!-- admin - blogs -->
 
 <pre>
-Get All Blogs
+Get All Blogs by Admin
 Method:  GET
 Endpoint: http://10.0.10.187:8000/api/v1/admin/all-blogs
 Headers: Authorization: Bearer <Token>
@@ -208,3 +208,39 @@ Response:
 ]
 </pre>
 
+<!-- update blog status -->
+<pre>
+Approve Blog by Admin
+Method:  Patch
+Endpoint: http://10.0.10.187:8000/api/v1/admin/update-blog-status/3
+Headers: Authorization: Bearer <Token>
+Body:
+{
+    "isApproved": false
+}
+Response:
+[
+    {
+        "id": 1,
+        "title": "The World of Programming",
+        "description": "Explore the exciting world of programming and coding.",
+        "image": "programming.png",
+        "isApproved": 1,
+        "category_id": 1,
+        "user_id": 2,
+        "created_at": "2023-10-19 08:25:39",
+        "updated_at": "2023-10-19 08:25:39"
+    },
+    {
+        "id": 3,
+        "title": "Adventures in Travel",
+        "description": "Embark on thrilling adventures and explore new places around the world.",
+        "image": "pakistan.png",
+        "isApproved": 0,
+        "category_id": 3,
+        "user_id": 2,
+        "created_at": "2023-10-19 08:25:39",
+        "updated_at": "2023-10-19 09:55:16"
+    }
+]
+</pre>
