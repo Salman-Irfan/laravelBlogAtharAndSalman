@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -15,19 +14,16 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Category 1',
+                'name' => 'programming',
                 'isChild' => null,
-                // Null means it's not a child category
             ],
             [
-                'name' => 'Category 2',
+                'name' => 'laravel',
                 'isChild' => 1,
-                // This category is a child of the category with ID 1
             ],
             [
-                'name' => 'Category 3',
+                'name' => 'travel',
                 'isChild' => null,
-                // Null means it's not a child category
             ],
         ];
 
