@@ -15,15 +15,13 @@ return new class extends Migration
             $table->id(); 
             $table->string('title'); 
             $table->text('description'); 
-            $table->string('image')->nullable(); 
-            // foreign key for category
-            $table->unsignedBigInteger('category_id')->nullable();
-            // Foreign key for user
-            $table->unsignedBigInteger('user_id'); 
-            $table->timestamps();
+            $table->string('image'); 
+            $table->unsignedBigInteger('category_id'); // Foreign key for category
+            $table->unsignedBigInteger('user_id'); // Foreign key for user
+            $table->timestamps(); 
 
             // Define foreign key constraints
-            $table->foreign('category_id')->references('id')->on('categories')->nullable(); // Make 'category_id' nullable
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
