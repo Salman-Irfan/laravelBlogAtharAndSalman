@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\DeleteUserById;
 use App\Http\Controllers\Api\Admin\GetAllUsers;
 use App\Http\Controllers\Api\AuthControllers\{
     LoginController,
@@ -29,15 +30,15 @@ Route::prefix('v1')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
 
     // ##### Protected Routes #####
-// login required
+    // login required
     Route::middleware(['auth:sanctum'])->group(function () {
-        // Admin routes
+        // Admin role required
         Route::middleware(['admin'])->group(function () {
             Route::get('/admin/get-all-users', [GetAllUsers::class, 'getAllUsers']);
-            Route::get('/admin/delete-user/{id}', [GetAllUsers::class, 'getAllUsers']); // under development
+            Route::delete('/admin/delete-user/{id}', [DeleteUserById::class, 'deleteUserById']); // under development
         });
 
-        // User routes
+        // User role required
         Route::middleware(['user'])->get('/user', function (Request $request) {
             return new LoginResource(auth()->user());
         });
