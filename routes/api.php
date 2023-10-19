@@ -36,12 +36,15 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         // Admin role required
         Route::middleware(['admin'])->group(function () {
-            // users routes
-            Route::get('/admin/get-all-users', [GetAllUsers::class, 'getAllUsers']);
-            Route::delete('/admin/delete-user/{id}', [DeleteUserById::class, 'deleteUserById']);
-            // blogs routes
-            Route::get('/admin/all-blogs', [GetAllBlogs::class, 'getAllBlogs']); // under development
-            Route::patch('/admin/update-blog-status/{id}', [UpdateBlogStatus::class, 'updateBlogStatus']); // under development
+            // prefix for admin
+            Route::prefix('admin')->group(function () {
+                // Users routes
+                Route::get('/get-all-users', [GetAllUsers::class, 'getAllUsers']);
+                Route::delete('/delete-user/{id}', [DeleteUserById::class, 'deleteUserById']);
+                // Blogs routes
+                Route::get('/all-blogs', [GetAllBlogs::class, 'getAllBlogs']);
+                Route::patch('/update-blog-status/{id}', [UpdateBlogStatus::class, 'updateBlogStatus']);
+            });
         });
 
         // User role required
