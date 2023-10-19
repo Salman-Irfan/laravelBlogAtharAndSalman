@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthControllers\{
     LoginController,
     RegisterController
 };
+use App\Http\Controllers\Api\User\CreateBlog;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Resources\Auth\LoginResource;
 use Illuminate\Http\Request;
@@ -54,7 +55,7 @@ Route::prefix('v1')->group(function () {
         Route::middleware(['user'])->group(function () {
             // prefix for admin
             Route::prefix('user')->group(function () {
-                
+                Route::post('/create-blog', [CreateBlog::class, 'createBlog']); // under development
             });
         });
     });
