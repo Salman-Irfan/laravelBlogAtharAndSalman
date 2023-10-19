@@ -219,28 +219,18 @@ Body:
     "isApproved": false
 }
 Response:
-[
-    {
-        "id": 1,
-        "title": "The World of Programming",
-        "description": "Explore the exciting world of programming and coding.",
-        "image": "programming.png",
-        "isApproved": 1,
-        "category_id": 1,
-        "user_id": 2,
-        "created_at": "2023-10-19 08:25:39",
-        "updated_at": "2023-10-19 08:25:39"
-    },
-    {
+{
+    "message": "Blog status updated successfully",
+    "data": {
         "id": 3,
         "title": "Adventures in Travel",
         "description": "Embark on thrilling adventures and explore new places around the world.",
         "image": "pakistan.png",
-        "isApproved": 0,
+        "isApproved": false,
         "category_id": 3,
         "user_id": 2,
-        "created_at": "2023-10-19 08:25:39",
-        "updated_at": "2023-10-19 09:55:16"
+        "created_at": "2023-10-19T08:25:39.000000Z",
+        "updated_at": "2023-10-19T09:55:16.000000Z"
     }
-]
+}
 </pre>
