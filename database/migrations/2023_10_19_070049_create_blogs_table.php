@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id(); 
             $table->string('title'); 
             $table->text('description'); 
-            $table->string('image'); 
+            $table->string('image');
+            $table->boolean('isApproved')->default(false);
             $table->unsignedBigInteger('category_id'); // Foreign key for category
             $table->unsignedBigInteger('user_id'); // Foreign key for user
             $table->timestamps(); 
