@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthControllers\{
     LoginController,
     RegisterController
 };
+use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Resources\Auth\LoginResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::prefix('v1')->group(function () {
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
+    // Blogs routes
+    Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
     // ##### Protected Routes #####
     // login required
     Route::middleware(['auth:sanctum'])->group(function () {
@@ -48,8 +51,11 @@ Route::prefix('v1')->group(function () {
         });
 
         // User role required
-        Route::middleware(['user'])->get('/user', function (Request $request) {
-            return new LoginResource(auth()->user());
+        Route::middleware(['user'])->group(function () {
+            // prefix for admin
+            Route::prefix('user')->group(function () {
+                
+            });
         });
     });
 });
