@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Blog;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BlogSeeder extends Seeder
@@ -18,7 +17,6 @@ class BlogSeeder extends Seeder
                 'title' => 'The World of Programming',
                 'description' => 'Explore the exciting world of programming and coding.',
                 'image' => 'programming.png',
-                
                 'isApproved' => true,
                 'category_id' => 1, // Programming
                 'user_id' => 2,
