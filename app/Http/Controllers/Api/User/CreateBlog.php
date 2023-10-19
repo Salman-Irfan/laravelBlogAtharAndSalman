@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog; // Import the Blog model
+use App\Models\Blog;
+use Illuminate\Support\Str; // Import the Str class
 
 class CreateBlog extends Controller
 {
@@ -15,7 +16,6 @@ class CreateBlog extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'image' => 'nullable|image',
-            // Validate image if included
             'category_id' => 'required|exists:categories,id',
         ]);
 
@@ -31,8 +31,11 @@ class CreateBlog extends Controller
 
         // Check if an image was included in the request
         if ($request->hasFile('image')) {
-            // Process and save the image
-            $imagePath = $request->file('image')->store('blog_images', 'public');
+            $image = $request->file('image');
+            $originalName = $image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $imageName = Str::slug(pathinfo($originalName, PATHINFO_FILENAME)) . '_blogThumbnail_' . time() . '.' . $extension;
+            $imagePath = $image->storeAs('blog_images', $imageName, 'public');
             $blog->image = $imagePath;
         }
 
