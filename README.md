@@ -269,3 +269,27 @@ Response:
     }
 ]
 </pre>
+
+<!-- User Role -->
+<h3>User Route</h3>
+<pre>
+Create Blog
+Method:  Post
+Endpoint: http://10.0.10.187:8000/api/v1/user/create-blog
+Headers: Authorization Bearer <"Token">
+Input: title, description, image, category_id
+Response:
+{
+    "message": "Blog created successfully",
+    "blog": {
+        "title": "from postman 3",
+        "description": "description from postman form data 3",
+        "category_id": "2",
+        "user_id": 2,
+        "image": "blog_images/gmail_blogThumbnail_1697716400.png",
+        "updated_at": "2023-10-19T11:53:20.000000Z",
+        "created_at": "2023-10-19T11:53:20.000000Z",
+        "id": 8
+    }
+}
+</pre>
