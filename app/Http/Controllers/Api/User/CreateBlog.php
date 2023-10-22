@@ -5,19 +5,14 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
-use Illuminate\Support\Str; // Import the Str class
+use Illuminate\Support\Str; // Import the Str for Slug class
+use App\Http\Requests\CreateBlogRequest; // Import the validation request
 
 class CreateBlog extends Controller
 {
-    public function createBlog(Request $request)
+    public function createBlog(CreateBlogRequest $request)
     {
-        // Validate the request data
-        $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'image' => 'nullable|image',
-            'category_id' => 'required|exists:categories,id',
-        ]);
+        // Received the Validated the request data
 
         // Retrieve the user ID from the authenticated user
         $user_id = $request->user()->id;
