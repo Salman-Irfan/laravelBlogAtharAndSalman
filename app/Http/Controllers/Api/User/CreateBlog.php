@@ -18,12 +18,10 @@ class CreateBlog extends Controller
         $user_id = $request->user()->id;
 
         // Create a new blog instance and fill it with request data
-        $blog = new Blog();
-        $blog->title = $request->input('title');
-        $blog->description = $request->input('description');
-        $blog->category_id = $request->input('category_id');
+        $blog = new Blog($request->only(['title', 'description', 'category_id']));
         $blog->user_id = $user_id;
 
+        
         // Check if an image was included in the request
         if ($request->hasFile('image')) {
             $image = $request->file('image');
