@@ -32,8 +32,10 @@ class CreateBlog extends Controller
         // Check if an image was included in the request
         if ($request->hasFile('image')) {
             $image = $request->file('image');
+            // renaming procedure
             $originalName = $image->getClientOriginalName();
             $extension = $image->getClientOriginalExtension();
+            // remove spaces from file name
             $imageName = Str::slug(pathinfo($originalName, PATHINFO_FILENAME)) . '_blogThumbnail_' . time() . '.' . $extension;
             $imagePath = $image->storeAs('blog_images', $imageName, 'public');
             $blog->image = $imagePath;
