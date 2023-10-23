@@ -44,21 +44,45 @@ class UserService
         return ['message' => 'Failed to login'];
     }
 
-
+    // Update User
     public function updateUser(User $user, array $userData)
     {
-        $user->name = $userData['name'];
-
-        if ($user->email !== $userData['email']) {
-            $this->validateEmail($userData['email']);
-            $user->email = $userData['email'];
+        if (isset($userData['name'])) {
+            $user->name = $userData['name'];
+        }
+        if (isset($userData['email'])) {
+            if ($user->email !== $userData['email']) {
+                $this->validateEmail($userData['email']);
+                $user->email = $userData['email'];
+            }
         }
         if (isset($userData['password'])) {
             $user->password = Hash::make($userData['password']);
         }
+        
+        // Save the user model to update the database
         $user->save();
-        return $user;
+        
+        return $user; // Return the updated user
     }
+    // public function updateUser(Request $request, $id)
+    //     {
+    //         $user = User::find($id);
+    //         if (!$user) {
+    //             return response()->json(['message' => 'User not found'], 404);
+    //         }
+    //         $validatedData = $request->validate([
+    //             'name' => 'string',
+    //             'email' => 'email|unique:users',
+    //             'password' => 'string|min:6',
+    //         ]);
+    //         $user->fill($validatedData);
+    //         if ($request->has('password')) {
+    //             $user->password = Hash::make($request->input('password'));
+    //         }
+    //         $user->save();
+    //         return response()->json(['message' => 'User updated successfully', 'user' => $user], 200);
+    //     }
 
 
     public function getUserById($id)

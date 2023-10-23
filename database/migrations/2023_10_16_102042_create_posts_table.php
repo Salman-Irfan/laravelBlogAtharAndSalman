@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->text('title');
             $table->text('description'); 
-            $table->string('category')->nullable(); 
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('user_id'); 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('category_id'); 
+            $table->unsignedBigInteger('user_id');
+            $table->boolean('isApproved')->default(false);
+            $table->foreign('user_id')->references('id')->on('users') ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')
+            ->onDelete('cascade');;
             $table->timestamps(); 
         });
     }

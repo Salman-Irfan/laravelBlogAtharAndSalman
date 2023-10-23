@@ -13,6 +13,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
 
 class UserController extends Controller{
+    
 public function __construct(UserService $userService)
 {
     $this->userService = $userService;
@@ -44,10 +45,11 @@ public function updateUser(UserUpdateRequest $request, $id)
     }
 
     $userData = $request->validated();
-    $user = $this->userService->updateUser($user, $userData);
+    $updatedUser = $this->userService->updateUser($user, $userData);
 
-    return response()->json(['message' => 'User updated successfully', 'user' => $user], 200);
+    return response()->json(['message' => 'User updated successfully', 'user' => $updatedUser], 200);
 }
+
 
 // Get By Id
 public function getUserById($id)
@@ -77,8 +79,16 @@ public function getAllUsers()
     $users = $this->userService->getAllUsers();
     return response()->json(['users' => $users], 200);
 }
+// Logout
+   public function logoutUser(Request $request) {
+       if ($request->user()) { 
+           $request->user()->tokens()->delete();
+       }
+       return response()->json(['message' => 'Logout successfully'], 200);
+   }
 
 }
+
 
 
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'image', 'user_id'];
+    protected $fillable = ['title', 'description', 'image', 'user_id', 'isApproved', 'category_id', ];
     
     public function user()
     {
@@ -17,5 +17,10 @@ class Post extends Model
 
     public function comments(){
         return $this->belongsTo(Comment::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
