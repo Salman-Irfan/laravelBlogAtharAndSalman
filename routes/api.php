@@ -33,10 +33,14 @@ Route::prefix('v1')->group(function () {
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
-    // Blogs routes
-    Route::get('/public/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
-    // get blog by id - public
-    Route::get('/public/get-blog/{id}', [GetBlogByIdController::class, 'getBlogByIdController']);
+    // prefix = public
+    Route::prefix('public')->group(function () {
+        // Blogs routes
+        Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
+        // get blog by id - public
+        Route::get('/get-blog/{id}', [GetBlogByIdController::class, 'getBlogByIdController']);
+    });
+
     // ##### Protected Routes #####
     // login required
     Route::middleware(['auth:sanctum'])->group(function () {
