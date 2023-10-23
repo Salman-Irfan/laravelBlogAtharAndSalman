@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\AuthControllers\{
 };
 use App\Http\Controllers\Api\User\CreateBlog;
 use App\Http\Controllers\Api\User\CreateCommentController;
+use App\Http\Controllers\Api\User\DeleteCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Controllers\Api\User\GetBlogByIdController;
 use Illuminate\Support\Facades\Route;
@@ -60,6 +61,7 @@ Route::prefix('v1')->group(function () {
             Route::prefix('user')->group(function () {
                 Route::post('/create-blog', [CreateBlog::class, 'createBlog']);
                 Route::post('/create-comment', [CreateCommentController::class, 'createCommentController']);
+                Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
             });
         });
     });

@@ -347,3 +347,25 @@ Response:
     }
 }
 </pre>
+
+<!-- User Role -->
+<h3>User Route</h3>
+<pre>
+Create Comment
+Method:  Delete
+Endpoint: http://10.0.10.187:8000/api/v1/user/delete-comment/12
+Headers: Authorization Bearer <"Token">
+
+Response:
+{
+  "message": "Comment deleted successfully",
+  "comment": {
+    "id": 14,
+    "comment": "this is a test comment",
+    "blog_id": 4,
+    "user_id": 2,
+    "created_at": "2023-10-23T08:13:07.000000Z",
+    "updated_at": "2023-10-23T08:13:07.000000Z"
+  }
+}
+</pre>
