@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateCommentRequest;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CreateCommentController extends Controller
 {
-    public function createCommentController (Request $request){
-        // Validate the request data
-        $this->validate($request, [
-            'comment' => 'required',
-            'blog_id' => 'required|exists:blogs,id',
-        ]);
+    public function createCommentController (CreateCommentRequest $request){
+        // Received validated the request data
         // Create a new comment
         $comment = new Comment();
         $comment->comment = $request->input('comment');

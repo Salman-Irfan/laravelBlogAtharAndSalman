@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\ImageService;
-use Illuminate\Http\Request;
 use App\Models\Blog;
-use Illuminate\Support\Str; // Import the Str for Slug class
 use App\Http\Requests\CreateBlogRequest; // Import the validation request
 
 class CreateBlog extends Controller
