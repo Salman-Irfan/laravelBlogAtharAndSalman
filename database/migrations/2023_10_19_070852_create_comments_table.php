@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('comment');
             $table->unsignedBigInteger('blog_id'); // Foreign key for the blog
-            $table->unsignedBigInteger('user_id'); // Foreign key for the user
+            $table->unsignedBigInteger('user_id')->nullable(); // Foreign key for the user
             $table->timestamps();
 
             // Define foreign key constraints

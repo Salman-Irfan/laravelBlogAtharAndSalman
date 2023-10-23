@@ -15,9 +15,18 @@ class GetBlogByIdController extends Controller
     {
 
         $blog = DB::table('blogs')
-            ->select('blogs.id as blog_id', 'blogs.title as blog_title', 'blogs.image as blog_image', 'blogs.description as blog_description', 'blogs.category_id as blog_category_id', 'categories.name as blog_category_name', 'blogs.created_at as blog_timestamps', 'users.name as user_name') // Include 'users.name' for the user's name
+            ->select(
+                'blogs.id as blog_id',
+                'blogs.title as blog_title',
+                'blogs.image as blog_image',
+                'blogs.description as blog_description',
+                'blogs.category_id as blog_category_id',
+                'categories.name as blog_category_name',
+                'blogs.created_at as blog_timestamps',
+                'users.name as user_name'
+            )
             ->join('categories', 'blogs.category_id', '=', 'categories.id')
-            ->join('users', 'blogs.user_id', '=', 'users.id') // Join the 'users' table
+            ->join('users', 'blogs.user_id', '=', 'users.id')
             ->where('blogs.id', $id)
             ->first();
 
@@ -34,7 +43,13 @@ class GetBlogByIdController extends Controller
 
         if ($blog) {
             $blog->comments = DB::table('comments')
-                ->select('comments.id as comment_id', 'comments.comment as comment', 'users.id as user_id', 'users.name as user_name', 'comments.created_at as comment_timestamps')
+                ->select(
+                    'comments.id as comment_id',
+                    'comments.comment as comment',
+                    'users.id as user_id',
+                    'users.name as user_name',
+                    'comments.created_at as comment_timestamps'
+                )
                 ->join('users', 'comments.user_id', '=', 'users.id')
                 ->where('comments.blog_id', $blog->blog_id)
                 ->get();
