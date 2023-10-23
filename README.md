@@ -283,3 +283,25 @@ Response:
     }
 }
 </pre>
+
+<!-- User Role -->
+<h3>User Route</h3>
+<pre>
+Create Comment
+Method:  Post
+Endpoint: http://10.0.10.187:8000/api/v1/user/create-comment
+Headers: Authorization Bearer <"Token">
+Input: comment, blog_id
+Response:
+{
+    "message": "Comment created successfully",
+    "comment": {
+        "comment": "this is a test comment",
+        "blog_id": "17",
+        "user_id": 2,
+        "updated_at": "2023-10-23T04:58:13.000000Z",
+        "created_at": "2023-10-23T04:58:13.000000Z",
+        "id": 4
+    }
+}
+</pre>
