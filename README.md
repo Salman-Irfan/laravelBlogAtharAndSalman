@@ -246,27 +246,17 @@ Endpoint: http://10.0.10.187:8000/api/v1/public/all-users-blogs
 Response:
 [
     {
-        "id": 1,
-        "title": "The World of Programming",
-        "description": "Explore the exciting world of programming and coding.",
-        "image": "programming.png",
-        "isApproved": 1,
-        "category_id": 1,
-        "user_id": 2,
-        "created_at": "2023-10-19 08:25:39",
-        "updated_at": "2023-10-19 08:25:39"
-    },
-    {
-        "id": 2,
-        "title": "Laravel: Building Web Applications",
-        "description": "Learn how to build web applications using the Laravel framework.",
-        "image": "laravel.png",
+        "id": 8,
+        "title": "from postman 3",
+        "description": "description from postman form data 3",
+        "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDpiTIAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAACDPAAAgzwGxSQ44AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+...",
         "isApproved": 1,
         "category_id": 2,
         "user_id": 2,
-        "created_at": "2023-10-19 08:25:39",
-        "updated_at": "2023-10-19 08:25:39"
-    }
+        "created_at": "2023-10-19 11:53:20",
+        "updated_at": "2023-10-19 12:19:52"
+    },
+    
 ]
 </pre>
 
@@ -282,14 +272,14 @@ Response:
 {
     "message": "Blog created successfully",
     "blog": {
-        "title": "from postman 3",
+        "title": "request separated",
         "description": "description from postman form data 3",
         "category_id": "2",
         "user_id": 2,
-        "image": "blog_images/gmail_blogThumbnail_1697716400.png",
-        "updated_at": "2023-10-19T11:53:20.000000Z",
-        "created_at": "2023-10-19T11:53:20.000000Z",
-        "id": 8
+        "image": "blog_images/gmail_blogThumbnail_1698034918.png",
+        "updated_at": "2023-10-23T04:21:58.000000Z",
+        "created_at": "2023-10-23T04:21:58.000000Z",
+        "id": 16
     }
 }
 </pre>
