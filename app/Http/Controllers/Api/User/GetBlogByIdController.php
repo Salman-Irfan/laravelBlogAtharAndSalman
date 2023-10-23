@@ -15,21 +15,21 @@ class GetBlogByIdController extends Controller
     {
 
         $blog = DB::table('blogs')
-            ->select('blogs.id as blog_id', 'blogs.title as blog_title', 'blogs.image as image', 'blogs.description as blog_description', 'blogs.category_id as blog_category_id', 'categories.name as blog_category_name', 'blogs.created_at as blog_timestamps', 'users.name as user_name') // Include 'users.name' for the user's name
+            ->select('blogs.id as blog_id', 'blogs.title as blog_title', 'blogs.image as blog_image', 'blogs.description as blog_description', 'blogs.category_id as blog_category_id', 'categories.name as blog_category_name', 'blogs.created_at as blog_timestamps', 'users.name as user_name') // Include 'users.name' for the user's name
             ->join('categories', 'blogs.category_id', '=', 'categories.id')
             ->join('users', 'blogs.user_id', '=', 'users.id') // Join the 'users' table
             ->where('blogs.id', $id)
             ->first();
 
-        if ($blog->image) {
+        if ($blog->blog_image) {
             // convert the image into base64
-            $imagePath = Storage::disk('public')->path($blog->image);
+            $imagePath = Storage::disk('public')->path($blog->blog_image);
             // read the binary image data
             $imageData = file_get_contents($imagePath);
             // generate a Base64-encoded data
             $base64Image = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode($imageData);
             // resulting Base64-encoded image
-            $blog->image = $base64Image;
+            $blog->blog_image = $base64Image;
         }
 
         if ($blog) {
