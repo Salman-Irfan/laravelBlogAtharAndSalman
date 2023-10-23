@@ -305,3 +305,45 @@ Response:
     }
 }
 </pre>
+
+<h3>Public Route</h3>
+<pre>
+Get Blog by Id with All Details
+Method:  Get
+Endpoint: http://10.0.10.187:8000/api/v1/public/get-blog/4
+Response:
+{
+    "blog": {
+        "blog_id": 4,
+        "blog_title": "Ryunosoke",
+        "blog_image": "data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4gxYS5u3VpjcfZ/ctpEF6/wB9.",
+        "blog_category_id": 2,
+        "blog_category_name": "laravel",
+        "blog_timestamps": "2023-10-23 08:10:08",
+        "user_name": "user",
+        "comments": [
+            {
+                "comment_id": 12,
+                "comment": "this is a test comment",
+                "user_id": 2,
+                "user_name": "user",
+                "comment_timestamps": "2023-10-23 08:13:01"
+            },
+            {
+                "comment_id": 13,
+                "comment": "this is a test comment",
+                "user_id": 2,
+                "user_name": "user",
+                "comment_timestamps": "2023-10-23 08:13:05"
+            },
+            {
+                "comment_id": 14,
+                "comment": "this is a test comment",
+                "user_id": 2,
+                "user_name": "user",
+                "comment_timestamps": "2023-10-23 08:13:07"
+            }
+        ]
+    }
+}
+</pre>
