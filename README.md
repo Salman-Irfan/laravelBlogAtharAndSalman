@@ -310,7 +310,7 @@ Response:
 <pre>
 Get Blog by Id with All Details
 Method:  Get
-Endpoint: http://10.0.10.187:8000/api/v1/public/get-blog/4
+Endpoint: http://10.0.10.187:8000/api/v1/public/get-blog/5
 Response:
 {
     "blog": {
