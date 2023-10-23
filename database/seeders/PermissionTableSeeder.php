@@ -8,11 +8,9 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class UserSeeder extends Seeder
+class PermissionTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    
     public function run(): void
     {
         $adminRole = Role::create(['name' => 'admin']);
@@ -20,33 +18,41 @@ class UserSeeder extends Seeder
         $guestRole = Role::create(['name' => 'guest']);
 
         $createPosts = Permission::create(['name' => 'create posts']);
-        $editPosts = Permission::create(['name' => 'edit own posts']);
-        $deleteOwnPosts = Permission::create(['name' => 'delete own posts']);
-        $viewPosts = Permission::create(['name' => 'view posts']);
-        
-        $createCategoryPermission = Permission::create(['name' => 'create category']);
-        $updateCategoryPermission = Permission::create(['name' => 'update category']);
-        $deleteCategoryPermission = Permission::create(['name' => 'delete category']);
-        $getAllCategoriesPermission = Permission::create(['name' => 'get all categories']);
-        $getAllUsersPermission = Permission::create(['name' => 'get all users']);
-        $deleteUserPermission = Permission::create(['name' => 'delete user']);
-        $approvePostPermission = Permission::create(['name' => 'approve post']);
+        $updatePosts = Permission::create(['name' => 'update post']);
+        $deletePosts = Permission::create(['name' => 'delete post']);
+        $showPosts = Permission::create(['name' => 'show posts for users']);
+
+        $createCategory = Permission::create(['name' => 'create category']);
+        $updateCategory = Permission::create(['name' => 'update category']);
+        $deleteCategory = Permission::create(['name' => 'delete category']);
+        $getAllCategories = Permission::create(['name' => 'get all categories']);
+
+        $getAllUsers = Permission::create(['name' => 'get all users']);
+        $updateUser = Permission::create(['name' => 'update user']);
+        $deleteUser = Permission::create(['name' => 'delete user']);
+        $approvePost = Permission::create(['name' => 'approve post']);
+        $createComment = Permission::create(['name' => 'create comment']);
+        $showComment = Permission::create(['name' => 'show comments']);
+        $logout = Permission::create(['name' => 'logout user']);
+        $getUserById = Permission::create(['name' => 'get user by id']);
+       
 
         $adminRole->givePermissionTo([
             'create category',
-    'update category',
-    'delete category',
-    'get all categories',
-    'get all users',
-    'delete user',
-    'approve post',
+            'update category',
+            'delete category',
+            'get all categories',
+            'get all users',
+            'delete user',
+            'approve post',
+            'get user by id',
+            'logout user',
+
     ]);
-        $userRole->givePermissionTo(['register user',
-        'login user',
-        'get all post',
+
+    $userRole->givePermissionTo([
         'show comments',
         'logout user',
-        'get user by id',
         'update user',
         'create post',
         'update post',
@@ -56,22 +62,9 @@ class UserSeeder extends Seeder
     ]);
 
         $guestRole->givePermissionTo([
-            'get all post',
-            'show comments',
+            'get all post', 
         ]);
 
-        $admin = User::create([
-            'name' => 'Admin',
-            'email' => 'admin123@.com',
-            'password' => Hash::make('admin123'),
-        ]);
-        $admin->assignRole('admin');
-
-        $user = User::create([
-            'name' => 'Regular User',
-            'email' => 'user@example.com',
-            'password' => Hash::make('password'),
-        ]);
-        $user->assignRole('user');
+      
     }
 }

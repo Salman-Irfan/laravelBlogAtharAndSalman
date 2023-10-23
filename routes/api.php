@@ -11,46 +11,44 @@ use App\Http\Controllers\CategoryController;
 
 // Public routes
 Route::post('/register', [UserController::class, 'registerUser']);
-Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/getAllPost', [PostController::class, 'getAllPost']);
-Route::get('/showComments/{post_id}', [CommentController::class, 'showComments']);
+Route::post('/login', [UserController::class, 'loginUser']);
 
 
 // Admin Routes
 Route::middleware(['auth:sanctum'])->group(function () {
     
-    Route::post('/createCategory', [CategoryController::class, 'createCategory']);
-    Route::put('/updateCategory/{id}', [CategoryController::class, 'updateCategory']);
-    Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
-    Route::get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
-    Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);
-    Route::delete('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory']);
-    Route::patch('/approvePost/{id}', [PostController::class, 'updatePostStatus']);
-    
+    Route::middleware(['permission:create category'])->post('/createCategory', [CategoryController::class, 'createCategory']);
+    Route::middleware(['permission:update category'])->put('/updateCategory/{id}', [CategoryController::class, 'updateCategory']);
+    Route::middleware(['permission:delete user'])->delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
+    Route::middleware(['get all categories'])->get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
+    Route::middleware(['permission:get all users'])->get('/getAllUsers', [UserController::class, 'getAllUsers']);
+    Route::middleware(['permission:delete category'])->delete('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory']);
+    Route::middleware(['permission:approve post'])->patch('/approvePost/{id}', [PostController::class, 'updatePostStatus']);
+    Route::middleware(['permission:get user by id'])->get('/getUserById/{id}', [UserController::class, 'getUserById']);
 });
 
 
 // User Routes
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/logout', [UserController::class, 'logoutUser']);
-    Route::get('/getUserById/{id}', [UserController::class, 'getUserById']);
-    Route::patch('/updateUser/{id}', [UserController::class, 'updateUser']);
-    Route::post('/createPost', [PostController::class, 'createPost']);
-    Route::patch('/updatePost/{id}', [PostController::class, 'updatePost']);
-    Route::get('/showPostsForUsers', [PostController::class, 'showPostsForUsers']);
-    Route::delete('/deletePost/{id}', [PostController::class, 'deletePost']);
-    Route::post('/createComment', [CommentController::class, 'createComment']);
+    
+    Route::middleware(['permission:logout user'])->post('/logout', [UserController::class, 'logoutUser']);
+    Route::middleware(['permission:update user'])->patch('/updateUser/{id}', [UserController::class, 'updateUser']);
+    Route::middleware(['permission:create_post'])->post('/createPost', [PostController::class, 'createPost']);
+    Route::middleware(['permission:update post'])->patch('/updatePost/{id}', [PostController::class, 'updatePost']);
+    Route::middleware(['permission:show posts for users'])->get('/showPostsForUsers', [PostController::class, 'showPostsForUsers']);
+    Route::middleware(['permission:delete post'])->delete('/deletePost/{id}', [PostController::class, 'deletePost']);
+    Route::middleware(['permission:create comment'])->post('/createComment', [CommentController::class, 'createComment']);
+    Route::middleware(['permission:show comments'])->get('/showComments/{post_id}', [CommentController::class, 'showComments']);
 });
 
-
-// Guest Routes
 Route::middleware(['guest'])->group(function () {
-    Route::get('/getAllPost', [PostController::class, 'getAllPost']);
+    Route::middleware(['permission:get all post'])->get('/getAllPost', [PostController::class, 'getAllPost']);
 });
 
 
 
-
+    
 
 // // Comments Routes
 // Route::middleware(['auth:sanctum'])->group(function () {

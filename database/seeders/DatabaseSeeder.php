@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,13 +15,27 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $admin = \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin123@gmail.com',
+            'password' => Hash::make('admin123'),
         ]);
 
-        $this->call([
-            PermissionTableSeeder::class,
+        $admin->assignRole('admin');
+
+        $user = \App\Models\User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@gmail.com',
+            'password' => Hash::make('password'),
         ]);
+        
+        $guest = \App\Models\User::factory()->create([
+            'id' => 0,
+            'name' => 'guest',
+            'email' => 'guest@gmail.com',
+            'password'=> 'guest@123',
+        ]);
+
+        $user->assignRole('user');
     }
 }
