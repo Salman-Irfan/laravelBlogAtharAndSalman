@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\AuthControllers\{
 use App\Http\Controllers\Api\User\CreateBlog;
 use App\Http\Controllers\Api\User\CreateCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
+use App\Http\Controllers\Api\User\GetBlogByIdController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::prefix('v1')->group(function () {
 
     // Blogs routes
     Route::get('/public/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
+    // get blog by id - public
+    Route::get('/public/get-blog/{id}', [GetBlogByIdController::class, 'getBlogByIdController']);
     // ##### Protected Routes #####
     // login required
     Route::middleware(['auth:sanctum'])->group(function () {
