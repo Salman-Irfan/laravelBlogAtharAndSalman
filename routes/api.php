@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\User\DeleteCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Controllers\Api\User\GetBlogByIdController;
 use App\Http\Controllers\Api\User\UpdateBlogController;
+use App\Http\Controllers\Api\User\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,6 +68,8 @@ Route::prefix('v1')->group(function () {
                 Route::post('/create-comment', [CreateCommentController::class, 'createCommentController']);
                 Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
                 Route::put('/update-blog/{blog}', [UpdateBlogController::class, 'updateBlogController']);
+                // email verification
+                Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
             });
         });
     });
