@@ -16,7 +16,7 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'The World of Programming',
                 'description' => 'Explore the exciting world of programming and coding.',
-                'image' => 'programming.png',
+                'image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png',
                 'isApproved' => true,
                 'category_id' => 1, // Programming
                 'user_id' => 2,
@@ -24,7 +24,7 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'Laravel: Building Web Applications',
                 'description' => 'Learn how to build web applications using the Laravel framework.',
-                'image' => 'laravel.png',
+                'image' => 'https://www.computerhope.com/jargon/j/javascript.png',
                 'isApproved' => true,
                 'category_id' => 2, // Laravel (child of Programming)
                 'user_id' => 2,
@@ -32,7 +32,7 @@ class BlogSeeder extends Seeder
             [
                 'title' => 'Adventures in Travel',
                 'description' => 'Embark on thrilling adventures and explore new places around the world.',
-                'image' => 'pakistan.png',
+                'image' => 'https://miro.medium.com/v2/resize:fit:1358/1*moJeTvW97yShLB7URRj5Kg.png',
                 'isApproved' => false,
                 'category_id' => 3, // Travel
                 'user_id' => 2,

@@ -19,8 +19,16 @@ return new class extends Migration
             $table->timestamps();
 
             // Define foreign key constraints
-            $table->foreign('blog_id')->references('id')->on('blogs');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('blog_id')
+                ->references('id')
+                ->on('blogs')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

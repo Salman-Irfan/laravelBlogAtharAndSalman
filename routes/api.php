@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\User\CreateCommentController;
 use App\Http\Controllers\Api\User\DeleteCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Controllers\Api\User\GetBlogByIdController;
+use App\Http\Controllers\Api\User\UpdateBlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,10 +35,13 @@ Route::prefix('v1')->group(function () {
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
-    // Blogs routes
-    Route::get('/public/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
-    // get blog by id - public
-    Route::get('/public/get-blog/{id}', [GetBlogByIdController::class, 'getBlogByIdController']);
+    // public routes
+    Route::prefix('public')->group(function () {
+        // Blogs routes
+        Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
+        // get blog by id - public
+        Route::get('/get-blog/{id}', [GetBlogByIdController::class, 'getBlogByIdController']);
+    });
 
     // ##### Protected Routes #####
     // login required
@@ -62,6 +66,7 @@ Route::prefix('v1')->group(function () {
                 Route::post('/create-blog', [CreateBlog::class, 'createBlog']);
                 Route::post('/create-comment', [CreateCommentController::class, 'createCommentController']);
                 Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
+                Route::put('/update-blog/{blog}', [UpdateBlogController::class, 'updateBlogController']);
             });
         });
     });
