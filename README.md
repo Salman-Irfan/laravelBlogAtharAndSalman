@@ -351,7 +351,7 @@ Response:
 <!-- User Role -->
 <h3>User Route</h3>
 <pre>
-Create Comment
+Delete Comment
 Method:  Delete
 Endpoint: http://10.0.10.187:8000/api/v1/user/delete-comment/12
 Headers: Authorization Bearer <"Token">
@@ -367,5 +367,31 @@ Response:
     "created_at": "2023-10-23T08:13:07.000000Z",
     "updated_at": "2023-10-23T08:13:07.000000Z"
   }
+}
+</pre>
+
+<!-- User Role -->
+<h3>User Route</h3>
+<pre>
+Update Blog
+Method:  Delete
+Endpoint: http://10.0.10.187:8000/api/v1/user/update-blog/4
+Input: title, description, image, category_id
+Headers: Authorization Bearer <"Token">
+
+Response:
+{
+    "message": "Blog updated successfully",
+    "blog": {
+        "id": 4,
+        "title": "title update",
+        "description": "desc updated",
+        "image": "blog_images/clay-banks-kiv1ggvkgqk-unsplash_blogThumbnail_1698115695.jpg",
+        "isApproved": false,
+        "category_id": 2,
+        "user_id": 2,
+        "created_at": "2023-10-24T02:48:15.000000Z",
+        "updated_at": "2023-10-24T02:58:38.000000Z"
+    }
 }
 </pre>
