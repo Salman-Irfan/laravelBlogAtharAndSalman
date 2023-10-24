@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id(); 
-            $table->string('title'); 
-            $table->text('description'); 
+            $table->string('title')->nullable(); 
+            $table->text('description')->nullable(); 
             $table->string('image')->nullable();
             $table->boolean('isApproved')->default(false);
-            $table->unsignedBigInteger('category_id'); // Foreign key for category
+            $table->unsignedBigInteger('category_id')->nullable(); // Foreign key for category
             $table->unsignedBigInteger('user_id'); // Foreign key for user
             $table->timestamps(); 
 
