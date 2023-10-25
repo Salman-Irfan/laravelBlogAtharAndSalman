@@ -66,6 +66,30 @@ headers: none
   </tbody>
 </table>
 
+<!-- Public Route -->
+<!-- email verification -->
+<h3>Email Verification Route</h3>
+<pre>
+EmailVerification
+Method:  Get
+Endpoint: http://{{BASE_URL}}:8000/api/v1/send-verify-email/salmanirfan692@gmail.com
+Response:
+{
+    "message": "Blog updated successfully",
+    "blog": {
+        "id": 4,
+        "title": "title update",
+        "description": "desc updated",
+        "image": "blog_images/clay-banks-kiv1ggvkgqk-unsplash_blogThumbnail_1698115695.jpg",
+        "isApproved": false,
+        "category_id": 2,
+        "user_id": 2,
+        "created_at": "2023-10-24T02:48:15.000000Z",
+        "updated_at": "2023-10-24T02:58:38.000000Z"
+    }
+}
+</pre>
+
 <!-- login -->
 
 <h4>Login User</h4>

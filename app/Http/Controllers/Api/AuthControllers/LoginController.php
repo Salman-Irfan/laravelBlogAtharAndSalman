@@ -22,7 +22,7 @@ class LoginController extends Controller
         }
         // Check if the user's email is verified
         if (!auth()->user()->hasVerifiedEmail()) {
-            Auth::logout(); // Log the user out
+            // Auth::logout(); // Log the user out
             Helper::sendError('Email is not verified. Please verify your email before logging in.', 401);
         }
         // 3. sending response
