@@ -33,6 +33,8 @@ Route::prefix('v1')->group(function () {
     // ###### Public Routes #####
     // register route
     Route::post('/register', [RegisterController::class, 'register']);
+    // email verification
+    Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
@@ -68,8 +70,7 @@ Route::prefix('v1')->group(function () {
                 Route::post('/create-comment', [CreateCommentController::class, 'createCommentController']);
                 Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
                 Route::put('/update-blog/{blog}', [UpdateBlogController::class, 'updateBlogController']);
-                // email verification
-                Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
+                
             });
         });
     });
