@@ -419,3 +419,30 @@ Response:
     }
 }
 </pre>
+
+<!-- User Role -->
+<h3>User Profile Route</h3>
+<pre>
+Get User 
+Method:  Get
+Endpoint: http://10.0.10.187:8000/api/v1/user/profile
+Headers: Authorization Bearer <"Token">
+
+Response:
+{
+    "user": {
+        "name": "Salman Irfan",
+        "email": "salmanirfan692@gmail.com"
+    },
+    "blogs": [
+        {
+            "title": "The Top 10 Hotels in Europe for an Unforgettable Experience",
+            "description": "Europe, with its rich history, diverse culture, and stunning landscapes, is a dream destination for travelers from around the world. When it comes to accommodation"
+            "image": "blog_images/hotels_blogThumbnail_1698217145.jpg",
+            "isApproved": 0,
+            "category_id": 3,
+            "created_at": "2023-10-25 06:59:05"
+        }
+    ]
+}
+</pre>
