@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\CreateCategoryController;
 use App\Http\Controllers\Api\Admin\DeleteUserById;
 use App\Http\Controllers\Api\Admin\GetAllBlogs;
 use App\Http\Controllers\Api\Admin\GetAllUsers;
@@ -31,15 +32,16 @@ use Illuminate\Support\Facades\Route;
 
 // Group routes with the prefix 'v1'
 Route::prefix('v1')->group(function () {
+    Route::post('/create-blog', [CreateBlog::class, 'createBlog']);
     // ###### Public Routes #####
-    // register route
+    // auth routes
     Route::post('/register', [RegisterController::class, 'register']);
     // email verification
     Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
-    // public routes
+    // public blog routes
     Route::prefix('public')->group(function () {
         // Blogs routes
         Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
@@ -60,6 +62,8 @@ Route::prefix('v1')->group(function () {
                 // Blogs routes
                 Route::get('/all-blogs', [GetAllBlogs::class, 'getAllBlogs']);
                 Route::patch('/update-blog-status/{id}', [UpdateBlogStatus::class, 'updateBlogStatus']);
+                // category routes
+                Route::post('/add-category', [CreateCategoryController::class, 'createCategoryController']);
             });
         });
 
