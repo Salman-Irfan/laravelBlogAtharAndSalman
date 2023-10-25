@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\User\DeleteCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Controllers\Api\User\GetBlogByIdController;
 use App\Http\Controllers\Api\User\UpdateBlogController;
+use App\Http\Controllers\Api\User\UserProfileController;
 use App\Http\Controllers\Api\User\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,15 +65,14 @@ Route::prefix('v1')->group(function () {
 
         // User role required
         Route::middleware(['user'])->group(function () {
-            // prefix for admin
+            // prefix for user
             Route::prefix('user')->group(function () {
                 Route::post('/create-blog', [CreateBlog::class, 'createBlog']);
                 Route::post('/create-comment', [CreateCommentController::class, 'createCommentController']);
                 Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
                 Route::put('/update-blog/{blog}', [UpdateBlogController::class, 'updateBlogController']);
-                
+                Route::get('/profile', [UserProfileController::class, 'viewUserProfile']);
             });
         });
     });
 });
-
