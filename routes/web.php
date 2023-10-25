@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\User\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// verification email page
+Route::get('/verify-mail/{token}', [VerifyEmailController::class, 'verificationMail']);

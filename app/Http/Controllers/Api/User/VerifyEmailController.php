@@ -59,4 +59,26 @@ class VerifyEmailController extends Controller
             ]);
         }
     }
+
+    // web.php
+    public function verificationMail($token){
+        $user = User::where('remember_token', $token)->first();
+        if($user){
+            // empty the rember_token
+            $user->remember_token = "";
+            // set the email verified at column
+            $user->email_verified_at = Carbon::now();
+            $user->save();
+            // send the success response
+            return response()->json([
+                "success"=> true,
+                "message"=> "Email is verified"
+            ]);
+        }else{
+            return response()->json([
+                'success'=> false,
+                'message'=> 'User not found'
+            ]);
+        }
+    }
 }
