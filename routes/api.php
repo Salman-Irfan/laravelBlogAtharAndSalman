@@ -37,12 +37,13 @@ Route::prefix('v1')->group(function () {
     // auth routes
     Route::post('/register', [RegisterController::class, 'register']);
     // email verification
-    Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
+    // Route::get('/send-verify-email/{email}', [VerifyEmailController::class, 'verifyEmailController']);
     // login route
     Route::post('/login', [LoginController::class, 'login']);
 
     // public blog routes
     Route::prefix('public')->group(function () {
+        Route::get('/all-blogs', [GetAllBlogs::class, 'getAllBlogs']);
         // Blogs routes
         Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
         // get blog by id - public
