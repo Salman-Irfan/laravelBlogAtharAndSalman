@@ -21,10 +21,11 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
-            'description' => $this->faker->sentence,
-            'category_id' => $this->faker->randomNumber(1, 10),
-            'user_id' => $this->faker->randomNumber(1, 10),
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
+            'image' =>$this->faker->imageUrl(),
+            'category_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => $this->faker->numberBetween(1, 10),
             'isApproved' => $this->faker->boolean,
         ];
     }
