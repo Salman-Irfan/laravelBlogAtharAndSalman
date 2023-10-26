@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\User\CreateCommentController;
 use App\Http\Controllers\Api\User\DeleteCommentController;
 use App\Http\Controllers\Api\User\GetAllUsersBlogs;
 use App\Http\Controllers\Api\User\GetBlogByIdController;
+use App\Http\Controllers\Api\User\GetCategoriesController;
 use App\Http\Controllers\Api\User\UpdateBlogController;
 use App\Http\Controllers\Api\User\UserProfileController;
 use App\Http\Controllers\Api\User\VerifyEmailController;
@@ -32,7 +33,6 @@ use Illuminate\Support\Facades\Route;
 
 // Group routes with the prefix 'v1'
 Route::prefix('v1')->group(function () {
-    Route::post('/create-blog', [CreateBlog::class, 'createBlog']);
     // ###### Public Routes #####
     // auth routes
     Route::post('/register', [RegisterController::class, 'register']);
@@ -76,6 +76,7 @@ Route::prefix('v1')->group(function () {
                 Route::delete('/delete-comment/{id}', [DeleteCommentController::class, 'deleteCommentController']);
                 Route::put('/update-blog/{blog}', [UpdateBlogController::class, 'updateBlogController']);
                 Route::get('/profile', [UserProfileController::class, 'viewUserProfile']);
+                Route::get('/categories', [GetCategoriesController::class, 'getAllCategories']);
             });
         });
     });
