@@ -25,7 +25,7 @@ class PermissionTableSeeder extends Seeder
         $createCategory = Permission::create(['name' => 'create category']);
         $updateCategory = Permission::create(['name' => 'update category']);
         $deleteCategory = Permission::create(['name' => 'delete category']);
-        $getAllCategories = Permission::create(['name' => 'get all categories']);
+        $getAllCategories = Permission::create(['name' => 'get all category']);
 
         $getAllUsers = Permission::create(['name' => 'get all users']);
         $updateUser = Permission::create(['name' => 'update user']);
@@ -41,12 +41,13 @@ class PermissionTableSeeder extends Seeder
             'create category',
             'update category',
             'delete category',
-            'get all categories',
+            'get all category',
             'get all users',
             'delete user',
             'approve post',
             'get user by id',
             'logout user',
+            // 'get all post'
 
     ]);
 
@@ -54,17 +55,18 @@ class PermissionTableSeeder extends Seeder
         'show comments',
         'logout user',
         'update user',
-        'create post',
+        'create posts',
         'update post',
         'show posts for users',
         'delete post',
         'create comment',
+        'get user by id',
+
     ]);
 
         $guestRole->givePermissionTo([
             'get all post', 
         ]);
 
-      
     }
 }

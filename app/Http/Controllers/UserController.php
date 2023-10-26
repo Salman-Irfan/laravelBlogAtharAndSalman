@@ -40,7 +40,7 @@ public function loginUser(UserLoginRequest $request)
 public function updateUser(UserUpdateRequest $request, $id)
 {
     $user = $this->userService->getUserById($id);
-    if (!$user) {
+    if (!$user) {   
         return response()->json(['message' => 'User not found'], 404);
     }
 

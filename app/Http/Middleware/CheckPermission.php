@@ -9,12 +9,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckPermission
 {
-    public function handle($request, Closure $next, $permission)
-    {
-        if (Auth::check() && Auth::user()->hasPermissionTo($permission)) {
-            return $next($request);
-        }
 
-        abort(403, 'Unauthorized');
+ public function handle(Request $request, Closure $next): Response
+    {
+        if (Auth::user() && Auth::user()->hasRole('admin')) {
+            return $next($request);
+        } else {
+            $user = Auth::user() && Auth::user()->hasRole('user');
+            return $next($request);
+        
+            return response()->json([
+                'message' => 'You have no right to do this',
+                'user' => $user,
+            ], 403);
+        }
     }
+
 }

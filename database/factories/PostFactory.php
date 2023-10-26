@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 use App\Models\Category;
-use App\Models\User;
+use App\Models\Post;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
- */
+
 class PostFactory extends Factory
 {
     /**
@@ -16,15 +16,17 @@ class PostFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    protected $model = Post::class;
+
+    public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph,
-            'image' => null, // Generates a random image URL
-            'category_id' => \App\Models\Category::factory(),
-            'user_id' => \App\Models\User::factory(),
-            'isApproved' => $this->faker->boolean(75), // 75% chance of being approved
+            'title' => $this->faker->title,
+            'description' => $this->faker->sentence,
+            'category_id' => $this->faker->randomNumber(1, 10),
+            'user_id' => $this->faker->randomNumber(1, 10),
+            'isApproved' => $this->faker->boolean,
         ];
     }
 }
+

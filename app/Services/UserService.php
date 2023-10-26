@@ -24,7 +24,7 @@ class UserService
         if($user_role){
             $user->assignRole($user_role);
         }
-      // $user->assignRole('User');
+    //   $user->assignRole('user');
 
       return $user;
   }

@@ -20,8 +20,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     Route::middleware(['permission:create category'])->post('/createCategory', [CategoryController::class, 'createCategory']);
     Route::middleware(['permission:update category'])->put('/updateCategory/{id}', [CategoryController::class, 'updateCategory']);
+    Route::middleware(['permission:get all category'])->get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
     Route::middleware(['permission:delete user'])->delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
-    Route::middleware(['get all categories'])->get('/getAllCategories', [CategoryController::class, 'getAllCategories']);
     Route::middleware(['permission:get all users'])->get('/getAllUsers', [UserController::class, 'getAllUsers']);
     Route::middleware(['permission:delete category'])->delete('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory']);
     Route::middleware(['permission:approve post'])->patch('/approvePost/{id}', [PostController::class, 'updatePostStatus']);
@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     
     Route::middleware(['permission:logout user'])->post('/logout', [UserController::class, 'logoutUser']);
     Route::middleware(['permission:update user'])->patch('/updateUser/{id}', [UserController::class, 'updateUser']);
-    Route::middleware(['permission:create_post'])->post('/createPost', [PostController::class, 'createPost']);
+    Route::middleware(['permission:create posts'])->post('/createPost', [PostController::class, 'createPost']);
     Route::middleware(['permission:update post'])->patch('/updatePost/{id}', [PostController::class, 'updatePost']);
     Route::middleware(['permission:show posts for users'])->get('/showPostsForUsers', [PostController::class, 'showPostsForUsers']);
     Route::middleware(['permission:delete post'])->delete('/deletePost/{id}', [PostController::class, 'deletePost']);
