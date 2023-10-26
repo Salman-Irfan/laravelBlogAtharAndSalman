@@ -29,16 +29,10 @@ class GetBlogByIdController extends Controller
             ->join('users', 'blogs.user_id', '=', 'users.id')
             ->where('blogs.id', $id)
             ->first();
-
-        if ($blog->blog_image) {
-            // convert the image into base64
-            $imagePath = Storage::disk('public')->path($blog->blog_image);
-            // read the binary image data
-            $imageData = file_get_contents($imagePath);
-            // generate a Base64-encoded data
-            $base64Image = 'data:image/' . pathinfo($imagePath, PATHINFO_EXTENSION) . ';base64,' . base64_encode($imageData);
-            // resulting Base64-encoded image
-            $blog->blog_image = $base64Image;
+        
+            // Convert image file path to URL
+            if ($blog->blog_image) {
+            $blog->blog_image = Storage::url($blog->blog_image);
         }
 
         if ($blog) {
