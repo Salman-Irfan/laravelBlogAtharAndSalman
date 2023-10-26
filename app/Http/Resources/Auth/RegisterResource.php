@@ -22,6 +22,7 @@ class RegisterResource extends JsonResource
             'roles.permissions' => $this->getPermissionsViaRoles()->pluck('name') ?? [],
             'permissions' => $this->permissions->pluck('name') ?? [],
             'email_verified_at' => $this->email_verified_at,
+            'message' => 'Email sent successfully',
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
