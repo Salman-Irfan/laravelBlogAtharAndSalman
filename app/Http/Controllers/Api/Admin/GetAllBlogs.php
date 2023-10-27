@@ -31,7 +31,7 @@ class GetAllBlogs extends Controller
             $blog->image = Storage::url($blog->image);
 
             // Add "blogStatus" field based on "isApproved" value
-            $blog->blogStatus = $blog->isApproved ? 'Approved' : 'Not Approved';
+            $blog->blogStatus = $blog->isApproved ? 'Approved' : 'Pending';
 
             return $blog;
         });

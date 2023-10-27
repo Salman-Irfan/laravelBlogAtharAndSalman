@@ -335,6 +335,24 @@ Response:
 }
 </pre>
 
+<h3>User Route</h3>
+<pre>
+Get All Categories
+Method:  Get
+Endpoint: http://10.0.10.187:8000/api/v1/user/categories
+Headers: Authorization Bearer <"Token">
+Response:
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "programming",
+            "isChild": null
+        }
+    ]
+}
+</pre>
+
 <!-- User Role -->
 <h3>User Route</h3>
 <pre>
