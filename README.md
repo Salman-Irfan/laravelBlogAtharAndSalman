@@ -265,7 +265,7 @@ Response:
 <!-- update blog status -->
 <pre>
 Create Blog Category
-Method:  Patch
+Method:  Post
 Endpoint: http://10.0.10.187:8000/api/v1/admin/add-category
 Headers: Authorization: Bearer <Token>
 Body:
