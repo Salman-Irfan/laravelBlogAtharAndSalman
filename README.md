@@ -285,7 +285,6 @@ Response:
 }
 </pre>
 
-<h3>User Route</h3>
 <pre>
 Get All Categories
 Method:  Get
