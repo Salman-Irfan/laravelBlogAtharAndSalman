@@ -285,6 +285,24 @@ Response:
 }
 </pre>
 
+<h3>User Route</h3>
+<pre>
+Get All Categories
+Method:  Get
+Endpoint: http://10.0.10.187:8000/api/v1/admin/categories
+Headers: Authorization Bearer <"Token">
+Response:
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "programming",
+            "isChild": null
+        }
+    ]
+}
+</pre>
+
 
 <!-- public routes -->
 <h3>Public Routes</h3>

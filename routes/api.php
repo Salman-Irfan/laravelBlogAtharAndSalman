@@ -64,6 +64,8 @@ Route::prefix('v1')->group(function () {
                 Route::patch('/update-blog-status/{id}', [UpdateBlogStatus::class, 'updateBlogStatus']);
                 // category routes
                 Route::post('/add-category', [CreateCategoryController::class, 'createCategoryController']);
+                // get all categories
+                Route::get('/categories', [GetCategoriesController::class, 'getAllCategories']);
             });
         });
 
