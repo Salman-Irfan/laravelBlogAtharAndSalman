@@ -43,7 +43,6 @@ Route::prefix('v1')->group(function () {
 
     // public blog routes
     Route::prefix('public')->group(function () {
-        Route::get('/all-blogs', [GetAllBlogs::class, 'getAllBlogs']);
         // Blogs routes
         Route::get('/all-users-blogs', [GetAllUsersBlogs::class, 'getAllUsersBlogs']);
         // get blog by id - public

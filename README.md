@@ -259,6 +259,33 @@ Response:
 }
 </pre>
 
+
+</pre>
+
+<!-- update blog status -->
+<pre>
+Create Blog Category
+Method:  Patch
+Endpoint: http://10.0.10.187:8000/api/v1/admin/add-category
+Headers: Authorization: Bearer <Token>
+Body:
+{
+    "name": Health
+}
+Response:
+{
+    "message": "Category added successfully",
+    "category": {
+        "name": "Travels",
+        "isChild": null,
+        "updated_at": "2023-10-27T05:04:20.000000Z",
+        "created_at": "2023-10-27T05:04:20.000000Z",
+        "id": 6
+    }
+}
+</pre>
+
+
 <!-- public routes -->
 <h3>Public Routes</h3>
 <pre>
