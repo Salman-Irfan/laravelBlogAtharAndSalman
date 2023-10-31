@@ -27,10 +27,11 @@ class GetBlogByIdController extends Controller
             ->join('users', 'blogs.user_id', '=', 'users.id')
             ->where('blogs.id', $id)
             ->first();
-        
-            // Convert image file path to URL
-            if ($blog->blog_image) {
-            $blog->blog_image = Storage::url($blog->blog_image);
+
+        // Convert image file path to URL
+        if ($blog->blog_image) {
+            $baseURL = 'http://10.0.10.187:8000';
+            $blog->blog_image = $baseURL . Storage::url($blog->blog_image);
         }
 
         if ($blog) {

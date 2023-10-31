@@ -11,6 +11,7 @@ class GetAllUsersBlogs extends Controller
 {
     public function getAllUsersBlogs(Request $request)
     {
+        $baseURL = 'http://10.0.10.187:8000';
         $allBlogs = DB::table('blogs')->where('isApproved', true)->get();
 
         // // Convert images to base64
@@ -28,7 +29,8 @@ class GetAllUsersBlogs extends Controller
         // }
         // Convert image file paths to URLs
         $allBlogs->transform(function ($blog) {
-            $blog->image = Storage::url($blog->image);
+            $baseURL = 'http://10.0.10.187:8000';
+            $blog->image = $baseURL . Storage::url($blog->image);
             return $blog;
         });
 
